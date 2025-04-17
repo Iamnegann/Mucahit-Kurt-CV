@@ -1,1 +1,5 @@
-# M-cahit-Kurt-CV
+# Mucahit-Kurt-CV
+
+Cvyi linkten görüntüleyebilirsiniz
+
+https://mucahitkurt-cv.netlify.app/
