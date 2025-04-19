@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mücahit Kurt">
+    <meta name="keywords"
+        content="Mücahit Kurt,Mücahit Kurt Bilgisayar Programcılığı,
+    Mücahit Kurt Bilgisayar Programcılığı Kültür Üniversitesi,Mücahit Kurt Frontend Developer,Mücahit Kurt İstanbul Kültür Üniversitesi,">
+    <meta name="author" content="Mücahit Kurt">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#4caf50">
+
+    <title>Mücahit Kurt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        @media only screen and (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            nav {
+                padding: 5px 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                margin: 5px 8px;
+                padding: 5px 10px;
+                background-color: #333;
+                border-radius: 5px;
+            }
+
+            nav a i {
+                margin-right: 3px;
+            }
+
+            body.light-mode nav a {
+                background-color: #e0e0e0;
+            }
+            
+            body.light-mode .socials a {
+        background-color: #e0e0e0; 
+    }
+
+            header {
+                margin-top: 60px;
+                padding: 20px 10px;
+            }
+
+            .profile-img {
+                margin-top: 20px;
+                width: 100px;
+                height: 100px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .animated-text {
+                font-size: 1.5rem;
+            }
+
+            .animated-subtext {
+                font-size: 1.2rem;
+            }
+
+            section {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .projects {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .project {
+                padding: 10px;
+            }
+
+            .skills {
+                gap: 5px;
+            }
+
+            .skill-name {
+                font-size: 0.9rem;
+            }
+
+            .progress {
+                height: 6px;
+            }
+
+            #contact p {
+                font-size: 0.9rem;
+
+            }
+
+            .socials {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .socials a {
+                font-size: 1rem;
+                margin: 0 5px;
+                padding: 5px 10px;
+                background-color: #333;
+                border-radius: 5px;
+            }
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            background-color: #f5f5f5;
+            color: #121212;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #1e1e1e;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        body.light-mode nav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        body.light-mode nav a {
+            color: #121212;
+        }
+
+        nav a:hover {
+            color: #4caf50;
+        }
+
+        header {
+            margin-top: 42px;
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1e1e1e, #333);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        body.light-mode header {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #444;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .animated-text {
+            width: 20ch;
+            text-wrap: nowrap;
+            overflow: hidden;
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: inline-block;
+            animation: typing 2s steps(20) infinite alternate-reverse;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0ch;
+            }
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #bdbdbd;
+            transition: color 0.3s;
+        }
+
+        body.light-mode p {
+            color: #555;
+        }
+
+        .animated-subtext {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: inline-block;
+            animation: colorChange 5s infinite;
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #8cff00;
+            }
+
+            25% {
+                color: #49a200;
+            }
+
+            50% {
+                color: #316d01;
+            }
+
+            75% {
+                color: #015b02;
+            }
+
+            100% {
+                color: #075617;
+            }
+        }
+
+        section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease-out forwards;
+            transition: background-color 0.3s;
+        }
+
+        body.light-mode section {
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .projects {
+            display: flex;
+            gap: 20px;
+        }
+
+        .project {
+            flex: 1;
+            background-color: #292929;
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        body.light-mode .project {
+            background-color: #e0e0e0;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            background-color: #3a3a3a;
+        }
+
+        .skills {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill {
+            margin: 10px 0;
+        }
+
+        .skill-name {
+            font-weight: bold;
+        }
+
+        .progress {
+            height: 8px;
+            background: #444;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        body.light-mode .progress {
+            background: #ccc;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #4caf50;
+        }
+
+        #contact a {
+            text-decoration: none;
+            color: #4caf50;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: #66ff66;
+        }
+
+        .socials {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .socials a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        body.light-mode .socials a {
+            color: #121212;
+        }
+
+        .socials a i {
+            margin-right: 5px;
+            color: #66ff66;
+            font-size: 24px;
+        }
+
+        .socials a:hover i {
+            color: #4caf50;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a onclick="scrollToHome()"><i class="fas fa-home"></i> Anasayfa</a>
+        <a onclick="scrollToSection('about')"><i class="fas fa-user"></i> Hakkımda</a>
+        <a onclick="scrollToSection('education')"><i class="fas fa-graduation-cap"></i> Eğitim</a>
+        <a onclick="scrollToSection('skills')"><i class="fas fa-tools"></i> Yetkinlikler</a>
+        <a onclick="scrollToSection('portfolio')"><i class="fas fa-project-diagram"></i> Projeler</a>
+        <a onclick="scrollToSection('contact')"><i class="fas fa-envelope"></i> İletişim</a>
+    </nav>
+
+    <header>
+        <img src="images/7669485715ed94ede15b46a21dc134d0.jpeg" alt="Profil Fotoğrafı" class="profile-img">
+        <h1 class="animated-text">Mücahit Kurt...</h1>
+        <p class="animated-subtext">Frontend Developer | PHP & Angular Enthusiast</p>
+    </header>
+
+    <section id="about">
+        <h2><i class="fas fa-user"></i> Hakkımda</h2>
+        <p>Merhaba! Ben Mücahit Kurt. <br>
+            İstanbul Kültür Üniversitesinde Bilgisayar Programcılığı okuyorum . <br>
+            Web geliştirme konusunda uzmanlaşıyorum. <br>
+            Php - Laravel , Angular ve React öğreniyorum.
+        </p>
+    </section>
+
+    <section id="education">
+        <h2><i class="fas fa-graduation-cap"></i> Eğitim</h2>
+        <p><i class="fas fa-school"></i> Bağcılar Barbaros Anadolu Lisesi</p>
+        <p><i class="fas fa-university"></i> İstanbul Kültür Üniversitesi - Bilgisayar Programcılığı</p>
+    </section>
+
+    <section id="skills">
+        <h2><i class="fas fa-tools"></i> Yetkinlikler</h2>
+        <div class="skills">
+            <div class="skill">
+                <span class="skill-name"><i class="fab fa-html5"></i> HTML & CSS</span>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <span class="skill-name"><i class="fab fa-js-square"></i> JavaScript & Angular & İonic</span>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 40%;"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <span class="skill-name"><i class="fab fa-php"></i> PHP & Laravel</span>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 30%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2><i class="fas fa-project-diagram"></i> Projelerim</h2>
+        <div class="projects">
+            <div class="project"
+                onclick="window.open('https://www.figma.com/design/SFsSZmctbXoDz4JwYaC10Y/M%C3%BCcahit-Kurt-2300006001?node-id=0-1&p=f', '_blank')">
+                <h3><i class="fab fa-figma"></i> Figma</h3>
+                <p>Figmada yaptığım tasarım projeleri içinde birkaç proje bulunmaktadır</p>
+            </div>
+            <div class="project" onclick="window.open('https://github.com/Iamnegann/chatbot-v1', '_blank')">
+                <h3><i class="fas fa-robot"></i> Chat-Bot Projesi</h3>
+                <p>C# ile Visiual Studıoda geliştirdiğim basit Chat-Bot Uygulaması.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2><i class="fas fa-envelope"></i> İletişim</h2>
+        <p><i class="fas fa-envelope"></i> E-posta: <a href="mailto:mucahitkurt5757@gmail.com"
+                target="_blank">mucahitkurt5757@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> Numara: <a href="tel:+905050560057" target="_blank">+90 505 056 0057</a></p>
+        <p><i class="fab fa-linkedin"></i> LinkedIn: <a href=" https://www.linkedin.com/in/mucahit-kurt"
+                target="_blank">www.linkedin.com/in/mucahit-kurt</a></p>
+    </section>
+
+    <div class="socials">
+        <a href="https://github.com/Iamnegann" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://github.com/Iamnegann" target="_blank"><i class="fab fa-tiktok"></i> Tiktok</a>
+        <a href="https://github.com/Iamnegann" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <button id="scroll-to-top" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLightMode = body.classList.contains('light-mode');
+            themeToggle.innerHTML = isLightMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        const scrollToTopButton = document.getElementById('scroll-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
+        });
+
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+
+            const navbarHeight = document.querySelector('nav').offsetHeight;
+            const viewportHeight = window.innerHeight;
+            const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+            const offset = sectionPosition - (viewportHeight / 2) + (section.offsetHeight / 2) - navbarHeight;
+
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToHome() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>
